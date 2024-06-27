@@ -17,6 +17,9 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
     - name: 'Az CLI login'
       uses: azure/login@v1
       with:
@@ -34,7 +37,7 @@ jobs:
       with:
         inlineScript: Get-AzResourceGroup -Name "Default"
         azPSVersion: "latest"
-        
+
     - name: Azure CLI script
       uses: azure/CLI@v1
       with:
